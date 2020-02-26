@@ -2,6 +2,9 @@ package com.libu.bootlaunchv1.controller;
 
 import com.libu.bootlaunchv1.model.AjaxResponse;
 import com.libu.bootlaunchv1.model.Article;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +16,12 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 @RestController
 @RequestMapping("/rest")
 public class ArticleRestController {
- 
+
+    @ApiOperation(value = "添加文章", notes = "添加新的文章", tags = "Article",httpMethod = "POST")
+
+    @ApiResponses({
+            @ApiResponse(code=200,message="成功",response=AjaxResponse.class),
+    })
     //增加一篇Article ，使用POST方法
     //@RequestMapping(value = "/article", method = POST, produces = "application/json")
     @PostMapping("/article")
